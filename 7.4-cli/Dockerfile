@@ -93,4 +93,11 @@ RUN ["chmod", "+x", "/usr/local/bin/magento-command"]
 RUN ["chmod", "+x", "/usr/local/bin/magerun2"]
 RUN ["chmod", "+x", "/usr/local/bin/run-cron"]
 
+# Install Magento 2
+RUN ["magento-installer"]
+
+# Install vue storefront indexer
+RUN ["composer", "require", "divante/magento2-vsbridge-indexer"]
+RUN ["php", "bin/magento", "setup:upgrade"]
+
 CMD ["bash"]
